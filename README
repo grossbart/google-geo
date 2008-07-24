@@ -23,7 +23,7 @@ In the case of sufficiently vague queries, Google::Geo will return more than one
 
   addresses = geo.locate 'hell'
 
-  addresses.size                  # 2
+  addresses.size                # 2
   addresses.map { |a| a.state } # ['PA', 'NC']
 
 == Contributors
