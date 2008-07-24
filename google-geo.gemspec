@@ -16,7 +16,7 @@ date: 2008-07-24 00:00:00 -07:00
 default_executable: 
 dependencies: 
 - !ruby/object:Gem::Dependency 
-  name: mocha
+  name: echoe
   type: :development
   version_requirement: 
   version_requirements: !ruby/object:Gem::Requirement 
@@ -26,7 +26,7 @@ dependencies:
         version: "0"
     version: 
 description: A simple, elegant library for getting geocoding information from Google Maps. Very much inspired by the google-geocode gem, but completely dependency free!
-email: ""
+email: sethrasmussen@gmail.com
 executables: []
 
 extensions: []
