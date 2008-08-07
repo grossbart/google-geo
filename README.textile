@@ -1,8 +1,8 @@
-# Google::Geo
+h1. Google::Geo
 
 A simple, elegant library for getting geocoding information from Google Maps. Very much inspired by the google-geocode gem, but completely dependency free!
 
-## Examples
+h2. Examples
   
   geo = Google::Geo.new API_KEY
   
@@ -26,10 +26,10 @@ In the case of sufficiently vague queries, Google::Geo will return more than one
   addresses.size                # 2
   addresses.map { |a| a.state } # ['PA', 'NC']
   
-## Contributors
+h2. Contributors
 
-Seth Thomas Rasmussen - http://greatseth.com - sethrasmussen@gmail.com
+Seth Thomas Rasmussen - "http://greatseth.com":http://greatseth.com
 
-## License
+h2. License
 
 (c) 2007-2008 Seth Thomas Rasmussen and released under the WTFPL. See the LICENSE file for details.
