@@ -7,22 +7,19 @@ h2. Examples
   geo = Google::Geo.new API_KEY
   
   addresses = geo.locate '1600 Amphitheatre Parkway, Mountain View, CA'
-  
   addresses.size # 1, :locate always returns an Array
   
   address = addresses.first
-  
   address.country      # 'US'
   address.city         # 'Mountain View'
-  address.full_address # '1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA'
-  
+  address.full_address # '1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA'  
   address.query        # '1600 Amphitheatre Parkway, Mountain View, CA'
   address.accuracy     # 8
+  address.coordinates  # [-122.084143, 37.421972, 0.0]
   
 In the case of sufficiently vague queries, Google::Geo will return more than one:
   
   addresses = geo.locate 'hell'
-  
   addresses.size                # 2
   addresses.map { |a| a.state } # ['PA', 'NC']
   
