@@ -1,38 +1,7 @@
 require 'open-uri'
 
 module Google
-
-# = Google::Geo
-# 
-# A simple, elegant library for getting geocoding information from Google Maps. Very much inspired by the google-geocode gem, but completely dependency free!
-# 
-# == Examples
-# 
-#   geo = Google::Geo.new API_KEY
-# 
-#   addresses = geo.locate '1600 Amphitheatre Parkway, Mountain View, CA'
-#   
-#   addresses.size # 1, :locate always returns an Array
-#   
-#   address = addresses.first
-# 
-#   address.country      # 'US'
-#   address.city         # 'Mountain View'
-#   address.full_address # '1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA'
-# 
-#   address.query        # '1600 Amphitheatre Parkway, Mountain View, CA'
-#   address.accuracy     # 8
-# 
-# In the case of sufficiently vague queries, Google will return more than one address:
-# 
-#   addresses = geo.locate 'heaven'
-# 
-#   addresses.size                  # 2
-#   addresses.map { |a| a.state } # ['PA', 'NC']
-# 
-# == Contributors
-# 
-# Seth Thomas Rasmussen - http://greatseth.com - sethrasmussen@gmail.com
+# Please see README for usage examples.
 class  Geo    
   # API key provided by Google allowing access to the Geocode API
   attr_accessor :key
