@@ -1,8 +1,9 @@
 CHANGELOG
+google-geo.gemspec
 lib/google/geo.rb
 LICENSE
 Rakefile
-README
+README.textile
 test/fixtures/invalid_map_key.xml
 test/fixtures/missing_address.xml
 test/fixtures/server_error.xml
