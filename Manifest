@@ -1,7 +1,7 @@
 CHANGELOG
-google-geo.gemspec
 lib/google/geo.rb
 LICENSE
+Manifest
 Rakefile
 README.textile
 test/fixtures/invalid_map_key.xml
@@ -65,4 +65,3 @@ vendor/mocha-0.4.0/test/stubba_acceptance_test.rb
 vendor/mocha-0.4.0/test/stubba_integration_test.rb
 vendor/mocha-0.4.0/test/stubba_test_result_integration_test.rb
 vendor/mocha-0.4.0/test/test_helper.rb
-Manifest
