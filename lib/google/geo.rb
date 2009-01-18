@@ -19,9 +19,27 @@ class  Geo
     res.placemarks.map { |place| Address.new place, res.query }
   end
   
+  # Returns an array of Address objects, each with accessors for all components of a location.
+  def reverse_geocode(ll={})
+    if ll.has_key?(:lat) && ll.has_key?(:lon)
+      latlon = "#{ll[:lat]},#{ll[:lon]}"
+    else
+      raise ArgumentError, "Missing keys for latitude, longitude"
+    end  
+    xml = open(uri(:ll => latlon)).read
+    res = Response.new(xml, key)
+    res.placemarks.map{|place| Address.new(place, res.query) }
+  end
+  
   # Generate a request URI from a given search string.
   def uri(address) #:nodoc:
-    "http://maps.google.com/maps/geo?q=#{URI.escape address}&key=#{key}&output=xml"
+    if address.kind_of?(String)
+      qstr = "q=#{URI.escape(address)}"
+    elsif address.kind_of?(Hash)
+      qstr = address.map{|k,v| "#{k.to_s}=#{URI.escape(v)}" }.flatten.join("&")
+    end
+    #"http://maps.google.com/maps/geo?q=#{URI.escape address}&key=#{key}&output=xml"
+    "http://maps.google.com/maps/geo?#{qstr}&key=#{key}&output=xml"
   end
   private :uri
   

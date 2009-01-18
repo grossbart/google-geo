@@ -22,10 +22,22 @@ In the case of sufficiently vague queries, Google::Geo will return more than one
   addresses = geo.locate 'hell'
   addresses.size                # 2
   addresses.map { |a| a.state } # ['PA', 'NC']
+
+
+You can reverse geocode:
+
+  geo = Google::Geo.new API_KEY
+  location = geo.reverse_geocode(:lat => 33.998671, :lon => -118.075926).first
+  location.city          # => Pico Rivera
+  location.state         # => CA
+  location.zip           # => 90660
+  location.country       # => US
+  location.full_address  # => 4952-4958 Tobias Ave, Pico Rivera, CA 90660, USA
   
 h2. Contributors
 
 Seth Thomas Rasmussen - "http://greatseth.com":http://greatseth.com
+Fernando Barajas - "http://fernyb.net":http://fernyb.net
 
 h2. License
 
