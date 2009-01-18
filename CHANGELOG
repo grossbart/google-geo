@@ -1,3 +1,5 @@
+v2.2. Added Support for Reverse Geocoding.
+
 v2.1. Added a LICENSE and RubyForge publishing support. Fixed Rakefile.
 
 v2.0. Multiple Addresses (and tests you can actually run!); Not insignificant API change: *** Google::Geo#locate ALWAYS RETURNS AN ARRAY ***; There are now some nice examples in the README; Updated to include the fixtures and vendor dependencies for tests, yeknow, so you can actually run them; No namby pamby point releases. This is serious, folks.
