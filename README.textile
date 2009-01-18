@@ -37,6 +37,7 @@ You can reverse geocode:
 h2. Contributors
 
 Seth Thomas Rasmussen - "http://greatseth.com":http://greatseth.com
+
 Fernando Barajas - "http://fernyb.net":http://fernyb.net
 
 h2. License
