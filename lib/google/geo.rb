@@ -20,7 +20,7 @@ class  Geo
   end
   
   # Returns an array of Address objects, each with accessors for all components of a location.
-  def reverse_geocode(ll={})
+  def reverse_locate(ll={})
     if ll.has_key?(:lat) && ll.has_key?(:lon)
       latlon = "#{ll[:lat]},#{ll[:lon]}"
     else
@@ -38,7 +38,6 @@ class  Geo
     elsif address.kind_of?(Hash)
       qstr = address.map{|k,v| "#{k.to_s}=#{URI.escape(v)}" }.flatten.join("&")
     end
-    #"http://maps.google.com/maps/geo?q=#{URI.escape address}&key=#{key}&output=xml"
     "http://maps.google.com/maps/geo?#{qstr}&key=#{key}&output=xml"
   end
   private :uri
