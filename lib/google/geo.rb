@@ -31,6 +31,31 @@ class  Geo
     res.placemarks.map{|place| Address.new(place, res.query) }
   end
   
+  def street_view_locate(ll={})
+    if ll.has_key?(:lat) && ll.has_key?(:lon)
+     locurl = "http://maps.google.com/cbk?output=xml&oe=utf-8&cb_client=api"
+     locurl += "&ll=#{ll[:lat]},#{ll[:lon]}&callback=_xdc_._0fqdyf9p2"
+    else
+     raise ArgumentError, "Missing Keys for latitude, longitude"
+    end
+    xml_response = open(locurl).read
+    pano_id = xml_response.scan(/pano_id="([a-zA-Z0-9\-_]+)"/).flatten.first
+    html_street_view(pano_id)
+  end
+  
+  def html_street_view(pano_id, width=500, height=300)
+    html_embed = %Q{<embed src="http://maps.google.com/mapfiles/cb/googlepano.066.swf"} 
+    html_embed += %Q{quality="high" bgcolor="#000000" style="width: #{width}px; height: #{height}px;}
+    html_embed += %Q{ position: relative;" wmode="opaque" swliveconnect="false" id="panoflash1"}
+    html_embed += %Q{ allowscriptaccess="always" type="application/x-shockwave-flash" }
+    html_embed += %Q{pluginspage="http://www.macromedia.com/go/getflashplayer" scale="noscale" salign="lt" }
+    html_embed += %Q{flashvars="panoId=#{pano_id}}
+    html_embed += %Q{&amp;directionMap=N:N,W:W,S:S,E:E,NW:NW,NE:NE,SW:SW,SE:SE&amp;yaw=0}
+    html_embed += %Q{&amp;zoom=0&amp;browser=3&amp;pitch=5&amp;viewerId=1&amp;context=api&amp;}
+    html_embed += %Q{animateOnLoad=false&amp;useSsl=false" align="middle"></embed>}
+    html_embed
+  end
+  
   # Generate a request URI from a given search string.
   def uri(address) #:nodoc:
     if address.kind_of?(String)
@@ -107,7 +132,7 @@ class  Geo
     def initialize(placemark, query) #:nodoc
       @xml   = placemark
       @query = query
-      
+
       {
         :@street       => :ThoroughfareName,
         :@city         => :LocalityName,
@@ -124,6 +149,11 @@ class  Geo
       @longitude, @latitude, @elevation = @coordinates = fetch(:coordinates).split(',').map { |x| x.to_f }
       
       @accuracy = fetch_accuracy
+    end
+    
+    def street_view
+      geo = Google::Geo.new('key')
+      geo.street_view_locate(:lat => @latitude, :lon => @longitude)
     end
   end
   
