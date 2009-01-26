@@ -27,12 +27,25 @@ In the case of sufficiently vague queries, Google::Geo will return more than one
 You can reverse geocode:
 
   geo = Google::Geo.new API_KEY
-  location = geo.reverse_geocode(:lat => 33.998671, :lon => -118.075926).first
+  location = geo.reverse_locate(:lat => 33.998671, :lon => -118.075926).first
   location.city          # => Pico Rivera
   location.state         # => CA
   location.zip           # => 90660
   location.country       # => US
   location.full_address  # => 4952-4958 Tobias Ave, Pico Rivera, CA 90660, USA
+
+
+You can locate street view
+  
+  geo = Google::Geo.new API_KEY
+  address = geo.locate('1600 Amphitheatre Parkway, Mountain View, CA').first
+  address.street_view   # => Returns an HTML Flash Embed Tag to display street view
+  
+
+  geo = Google::Geo.new API_KEY
+  location = geo.reverse_locate(:lat => 33.998671, :lon => -118.075926).first
+  location.street_view  # => Returns street view for location
+
   
 h2. Contributors
 
