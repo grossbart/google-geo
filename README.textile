@@ -33,12 +33,21 @@ You can reverse geocode:
   location.zip           # => 90660
   location.country       # => US
   location.full_address  # => 4952-4958 Tobias Ave, Pico Rivera, CA 90660, USA
-  
+
+h2. Options
+
+If you need to get the results in another language, you can set it like so:
+
+  geo = Google::Geo.new API_KEY
+  geo.language = 'de'
+
+where the language code can be anything listed on http://spreadsheets.google.com/pub?key=p9pdwsai2hDMsLkXsoM05KQ&gid=1
+
 h2. Contributors
 
-Seth Thomas Rasmussen - "http://greatseth.com":http://greatseth.com
-
-Fernando Barajas - "http://fernyb.net":http://fernyb.net
+* Seth Thomas Rasmussen - "http://greatseth.com":http://greatseth.com
+* Fernando Barajas - "http://fernyb.net":http://fernyb.net
+* Peter Gassner - "http://www.naehrstoff.ch":http://www.naehrstoff.ch
 
 h2. License
 

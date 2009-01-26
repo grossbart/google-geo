@@ -4,10 +4,11 @@ module Google
 # Please see README for usage examples.
 class  Geo    
   # API key provided by Google allowing access to the Geocode API
-  attr_accessor :key
+  attr_accessor :key, :language
   
   def initialize(key)
     @key = key
+    @language = 'en'
   end
   
   # Returns an array of Address objects, each with accessors for all the components of a location. 
@@ -38,8 +39,7 @@ class  Geo
     elsif address.kind_of?(Hash)
       qstr = address.map{|k,v| "#{k.to_s}=#{URI.escape(v)}" }.flatten.join("&")
     end
-    #"http://maps.google.com/maps/geo?q=#{URI.escape address}&key=#{key}&output=xml"
-    "http://maps.google.com/maps/geo?#{qstr}&key=#{key}&output=xml"
+    "http://maps.google.com/maps/geo?#{qstr}&key=#{key}&output=xml&hl=#{language}"
   end
   private :uri
   

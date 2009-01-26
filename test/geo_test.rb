@@ -11,7 +11,7 @@ class Google::GeoTest < Test::Unit::TestCase
   def test_success
     @geo.expects(:open).
          # show that query is escaped
-         with("http://maps.google.com/maps/geo?q=1600%20Amphitheatre%20Parkway,%20Mountain%20View,%20CA&key=API_KEY&output=xml").
+         with("http://maps.google.com/maps/geo?q=1600%20Amphitheatre%20Parkway,%20Mountain%20View,%20CA&key=API_KEY&output=xml&hl=en").
          returns(response(:success))
     
     query = '1600 Amphitheatre Parkway, Mountain View, CA'
@@ -63,6 +63,29 @@ class Google::GeoTest < Test::Unit::TestCase
     assert_equal 'Heaven, Oakboro, NC 28129, USA', heavens[1].full_address
     
     heavens.each { |h| assert_kind_of Google::Geo::Address, h }
+  end
+  
+  def test_has_an_accessible_language_attribute_defaulting_to_english
+    assert_equal 'en', @geo.language
+    @geo.language = 'de'
+    assert_equal 'de', @geo.language
+  end
+  
+  def test_can_get_results_in_german
+    @geo.expects(:open).
+         with("http://maps.google.com/maps/geo?q=Z%C3%BCrich,%20Schweiz&key=API_KEY&output=xml&hl=de").
+         returns(response(:success_german))
+    @geo.language = 'de'
+    address = @geo.locate('Zürich, Schweiz').first
+    assert_equal 'Zürich, Schweiz', address.full_address
+  end
+  
+  def test_gets_english_results_by_default
+    @geo.expects(:open).
+         with("http://maps.google.com/maps/geo?q=Z%C3%BCrich,%20Schweiz&key=API_KEY&output=xml&hl=en").
+         returns(response(:success_english))
+    address = @geo.locate('Zürich, Schweiz').first
+    assert_equal 'Zürich, Switzerland', address.full_address
   end
 
   def test_invalid_map_key

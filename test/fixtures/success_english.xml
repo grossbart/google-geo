@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+  <Response>
+    <name>Zürich, Schweiz</name>
+    <Status>
+      <code>200</code>
+      <request>geocode</request>
+    </Status>
+    <Placemark id="p1">
+      <address>Zürich, Switzerland</address>
+      <AddressDetails Accuracy="4" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
+        <Country>
+          <CountryNameCode>CH</CountryNameCode>
+          <CountryName>Switzerland</CountryName>
+          <AdministrativeArea>
+            <AdministrativeAreaName>Zurich</AdministrativeAreaName>
+            <SubAdministrativeArea>
+              <SubAdministrativeAreaName>Zurich</SubAdministrativeAreaName>
+              <Locality>
+                <LocalityName>Zürich</LocalityName>
+              </Locality>
+            </SubAdministrativeArea>
+          </AdministrativeArea>
+        </Country>
+      </AddressDetails>
+      <ExtendedData>
+        <LatLonBox north="47.4347210" south="47.3201830" east="8.6254420" west="8.4480810" />
+      </ExtendedData>
+      <Point>
+        <coordinates>8.5380326,47.3690239,0</coordinates>
+      </Point>
+    </Placemark>
+  </Response>
+</kml>
