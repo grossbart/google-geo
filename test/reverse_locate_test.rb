@@ -10,7 +10,7 @@ class Google::GeoTest < Test::Unit::TestCase
     
   def test_should_reverse_locate_with_latlon
      @geo.expects(:open).
-       with("http://maps.google.com/maps/geo?ll=33.998671,-118.075926&key=API_KEY&output=xml&hl=en").
+       with("http://maps.google.com/maps/geo?ll=33.998671,-118.075926&key=API_KEY&output=xml&hl=en&oe=utf-8").
        returns(response(:reverse_locate_success))
     
     location = @geo.reverse_locate({:lat => 33.998671, :lon => -118.075926})

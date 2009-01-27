@@ -29,7 +29,7 @@ class Google::GeoTest < Test::Unit::TestCase
   
   def test_reverse_location_should_have_streetview
     @geo.expects(:open).
-     with("http://maps.google.com/maps/geo?ll=34.154961,-118.25514&key=API_KEY&output=xml&hl=en").
+     with("http://maps.google.com/maps/geo?ll=34.154961,-118.25514&key=API_KEY&output=xml&hl=en&oe=utf-8").
      returns(response(:reverse_locate_success))
     
     location = @geo.reverse_locate(:lat => 34.154961, :lon => -118.25514).first
@@ -45,7 +45,7 @@ class Google::GeoTest < Test::Unit::TestCase
   
   def test_locate_should_have_streetview
     @geo.expects(:open).
-      with("http://maps.google.com/maps/geo?q=1600%20Amphitheatre%20Parkway,%20Mountain%20View,%20CA&key=API_KEY&output=xml&hl=en").
+      with("http://maps.google.com/maps/geo?q=1600%20Amphitheatre%20Parkway,%20Mountain%20View,%20CA&key=API_KEY&output=xml&hl=en&oe=utf-8").
       returns(response(:success))
   
     query = '1600 Amphitheatre Parkway, Mountain View, CA'

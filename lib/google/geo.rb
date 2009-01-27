@@ -5,10 +5,16 @@ module Google
 class  Geo    
   # API key provided by Google allowing access to the Geocode API
   attr_accessor :key, :language
+
+  # Google's XML files state that they are utf-8 encoded which is not true.
+  # Because they state this explicitly, I see no need to let users set
+  # another charset.
+  attr_reader :charset
   
   def initialize(key)
     @key = key
     @language = 'en'
+    @charset = 'utf-8'
   end
   
   # Returns an array of Address objects, each with accessors for all the components of a location. 
@@ -64,7 +70,7 @@ class  Geo
     elsif address.kind_of?(Hash)
       qstr = address.map{|k,v| "#{k.to_s}=#{URI.escape(v)}" }.flatten.join("&")
     end
-    "http://maps.google.com/maps/geo?#{qstr}&key=#{key}&output=xml&hl=#{language}"
+    "http://maps.google.com/maps/geo?#{qstr}&key=#{key}&output=xml&hl=#{language}&oe=#{charset}"
   end
   private :uri
   
