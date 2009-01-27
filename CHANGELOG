@@ -1,3 +1,5 @@
+v2.3. Added Support for Street View. Renamed method reverse_geocoding to reverse_location. 
+
 v2.2. Added Support for Reverse Geocoding.
 
 v2.1. Added a LICENSE and RubyForge publishing support. Fixed Rakefile.
