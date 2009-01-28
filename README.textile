@@ -4,6 +4,9 @@ A simple, elegant library for getting geocoding information from Google Maps. Ve
 
 h2. Examples
   
+  require 'rubygems'
+  require 'google/gem'
+  
   geo = Google::Geo.new API_KEY
   
   addresses = geo.locate '1600 Amphitheatre Parkway, Mountain View, CA'
